@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Edit Profile</h1>
+    <form #f="ngForm" >  
+        <!-- <p>{{this.user|json}}</p> -->
+        <div class="form-group">
+            <label for="name">
+                Name
+            </label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="this.user.name">
+        </div>
+        <div>
+            <button type="submit" style="width: 100px; margin:auto;margin-top:30px;" (click)="onClick('name')">Update</button>
+        </div>
+        <div class="form-group">
+            <label for="userName">user name</label>
+            <input type="text" name="userName" class="form-control"  [(ngModel)]="this.user.userName">
+        </div>
+        <div>
+            <button type="submit" (click)="onClick('username')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+        </div>
+        <div class="form-group">
+            <label for="password">new password</label>
+            <input type="password" name="password" id="" [(ngModel)]="pass" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password1">retype password</label>
+            <input type="password" name="password1" id="" [(ngModel)]="confirmPass" class="form-control">
+        </div>
+        <div>
+            <button type="submit" (click)="onClick('pass')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" name="email" [(ngModel)]="this.user.contact" class="form-control">
+        </div>
+        <div>
+            <button type="submit" (click)="onClick('email')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+        </div>
+        <div class="form-group">
+            <label for="contact">phone no</label>
+            <input type="text" name="contact" [(ngModel)]="this.user.email" class="form-control">
+        </div>
+        <div>
+            <button type="submit" (click)="onClick('contact')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+        </div>
+        <div class="form-group">
+            <label for="oldPassword">Confirm old password</label>
+            <input type="password" name="oldPassword" id="" [(ngModel)]="oldPass" class="form-control">
+        </div>
+    </form>
+</div>
