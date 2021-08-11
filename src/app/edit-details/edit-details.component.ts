@@ -46,7 +46,7 @@ export class EditDetailsComponent implements OnInit {
        .subscribe(res=>{
         console.log(res);
         this.user=res;
-        alert("updated ");
+        alert(`updated ${s}`);
       },err=>{
         if(err instanceof HttpErrorResponse){
           alert("update failed :user name already exists")
@@ -58,7 +58,7 @@ export class EditDetailsComponent implements OnInit {
         .subscribe(res=>{
          console.log(res);
          this.user=res;
-         alert("updated {{s}}");
+         alert(`updated ${s}`);
        },err=>console.log(err));
       }
       else if(s==="email"){
@@ -66,7 +66,7 @@ export class EditDetailsComponent implements OnInit {
        .subscribe(res=>{
         console.log(res);
         this.user=res;
-        alert("updated {{s}}");
+        alert(`updated ${s}`);
       },err=>console.log(err));
       }
       else if(s=="contact") {
@@ -74,7 +74,7 @@ export class EditDetailsComponent implements OnInit {
         .subscribe(res=>{
          console.log(res);
          this.user=res;
-         alert("updated {{s}}");
+         alert(`updated ${s}`);
        },err=>console.log(err));
       }
     }

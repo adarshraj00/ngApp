@@ -13,7 +13,6 @@ export class AuthService {
   loginUser(user:any) {
     return this.http.post('http://localhost:3000/api/login',user,{headers:new HttpHeaders().set('Content-Type','application/json')})
   }
-
   loggedIn() {
     return localStorage.getItem('token');
   }
