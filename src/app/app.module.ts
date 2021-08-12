@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { LoggedInGuard } from './logged-in.guard';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { TrendsComponent } from './trends/trends.component';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { TrendsComponent } from './trends/trends.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingBarRouterModule,
+    LoadingBarModule
   ],
   providers: [AuthService,AuthGuard,LoggedInGuard,{
      provide: HTTP_INTERCEPTORS, useClass:TokenInterceptorService , multi: true }],
