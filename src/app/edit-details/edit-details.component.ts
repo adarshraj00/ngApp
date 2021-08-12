@@ -35,6 +35,7 @@ export class EditDetailsComponent implements OnInit {
 
  
   onClick(s:any){
+    console.log(this.user,s);
     if(this.oldPass!==this.user.password){
       this.oldPass='';
       alert("Old password is wrong");
@@ -54,15 +55,16 @@ export class EditDetailsComponent implements OnInit {
       });
       }
       else if(s=="username"){
-        this.auth.update({username:this.user.name})
+        this.auth.update({userName:this.user.userName})
         .subscribe(res=>{
          console.log(res);
          this.user=res;
          alert(`updated ${s}`);
        },err=>console.log(err));
       }
-      else if(s==="email"){
-        this.auth.update({"email":this.user.name})
+      else if(s=="email"){
+        console.log(this.user.email,"test")
+        this.auth.update({email:this.user.email})
        .subscribe(res=>{
         console.log(res);
         this.user=res;
@@ -70,7 +72,7 @@ export class EditDetailsComponent implements OnInit {
       },err=>console.log(err));
       }
       else if(s=="contact") {
-        this.auth.update({contact:this.user.name})
+        this.auth.update({contact:this.user.contact})
         .subscribe(res=>{
          console.log(res);
          this.user=res;
