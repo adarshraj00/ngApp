@@ -12,7 +12,7 @@ export class EditDetailsComponent implements OnInit {
  
   pass!:string;
   confirmPass!:string;
-  oldPass!:string;
+  oldPass:string="";
   constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
@@ -46,7 +46,9 @@ export class EditDetailsComponent implements OnInit {
         this.auth.update({name:this.user.name})
        .subscribe(res=>{
         console.log(res);
+        this.user.name="test"
         this.user=res;
+        console.log(this.user.name);
         alert(`updated ${s}`);
       },err=>{
         if(err instanceof HttpErrorResponse){
