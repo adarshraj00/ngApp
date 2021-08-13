@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   }
   d=""
   onSubmit(v:any){
-    if(v.value.name=="" || v.value.email=="" || v.value.password=="" || v.value.phone==""){
+    if(v.value.name=="" || v.value.email=="" || v.value.password=="" || v.value.phone=="" || v.value.userName==""){
       alert("Please fill all the fields");
       return;
     }

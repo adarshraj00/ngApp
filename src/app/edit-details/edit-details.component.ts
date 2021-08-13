@@ -43,6 +43,10 @@ export class EditDetailsComponent implements OnInit {
     }
     if(s!=="pass"){
       if(s=="name"){
+        if(this.user.name==""){
+          alert("Name cannot be empty");
+          return;
+        }
         this.auth.update({name:this.user.name})
        .subscribe(res=>{
         console.log(res);
@@ -57,6 +61,10 @@ export class EditDetailsComponent implements OnInit {
       });
       }
       else if(s=="username"){
+        if(this.user.userName==""){
+          alert("Username cannot be empty");
+          return;
+        }
         this.auth.update({userName:this.user.userName})
         .subscribe(res=>{
          console.log(res);
@@ -65,6 +73,10 @@ export class EditDetailsComponent implements OnInit {
        },err=>console.log(err));
       }
       else if(s=="email"){
+        if(this.user.email==""){
+          alert("Email cannot be empty");
+          return;
+        }
         console.log(this.user.email,"test")
         this.auth.update({email:this.user.email})
        .subscribe(res=>{
@@ -74,6 +86,10 @@ export class EditDetailsComponent implements OnInit {
       },err=>console.log(err));
       }
       else if(s=="contact") {
+        if(this.user.contact==""){
+          alert("Contact cannot be empty");
+          return;
+        }
         this.auth.update({contact:this.user.contact})
         .subscribe(res=>{
          console.log(res);
@@ -83,7 +99,11 @@ export class EditDetailsComponent implements OnInit {
       }
     }
     else{
-      if(this.pass!==this.confirmPass){
+      if(this.pass===""){
+        alert("Password cannot be empty");
+        return;
+      }
+      else if(this.pass!==this.confirmPass){
         alert("Passwords don't match");
       }
       else{
