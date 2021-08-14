@@ -58,9 +58,7 @@ export class EditDetailsComponent implements OnInit {
             alert(`updated ${s}`);
           },
           (err) => {
-            if (err instanceof HttpErrorResponse) {
-              alert('update failed :user name already exists');
-            }
+            console.log(err);
           }
         );
       } else if (s == 'username') {
@@ -70,14 +68,16 @@ export class EditDetailsComponent implements OnInit {
         }
         this.auth.update({ userName: this.user.userName }).subscribe(
           (res) => {
-            console.log('fuck');
-
             console.log(res);
             this.user = res;
             //  this.user.name="test";
             alert(`updated ${s}`);
           },
-          (err) => console.log(err)
+          (err) => {
+            if(err instanceof HttpErrorResponse){
+              alert('update failed :username already exists');
+            }
+          }
         );
       } else if (s == 'email') {
         if (this.user.email == '') {
