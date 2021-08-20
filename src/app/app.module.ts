@@ -15,6 +15,9 @@ import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { TrendsComponent } from './trends/trends.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { ResumeComponent } from './resume/resume.component';
+import { ResumesComponent } from './resumes/resumes.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,9 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     LoginComponent,
     HomeComponent,
     EditDetailsComponent,
-    TrendsComponent
+    TrendsComponent,
+    ResumeComponent,
+    ResumesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     FormsModule,
     HttpClientModule,
     LoadingBarRouterModule,
-    LoadingBarModule
+    LoadingBarModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,AuthGuard,LoggedInGuard,{
      provide: HTTP_INTERCEPTORS, useClass:TokenInterceptorService , multi: true }],

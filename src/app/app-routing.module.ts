@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoggedInGuard } from './logged-in.guard';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import { TrendsComponent } from './trends/trends.component';
+import { ResumeComponent } from './resume/resume.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
     path:'edit',
     component:EditDetailsComponent,
     canActivate:[AuthGuard]
+  },
+  {
+    path: 'create',
+    component: ResumeComponent
   }
 ];
 

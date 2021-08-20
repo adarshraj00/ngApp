@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +8,7 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService,public router:Router) { }
   user:any
   ngOnInit(): void {
     console.log(this.user);
@@ -16,5 +17,7 @@ export class HomeComponent implements OnInit {
       this.user=res;
     },(err)=>console.log(err));
   }
-
+  create(){
+    this.router.navigate(['/create']);
+  }
 }
