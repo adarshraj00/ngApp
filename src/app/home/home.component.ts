@@ -12,7 +12,7 @@ import html2canvas from 'html2canvas';
 })
 export class HomeComponent implements OnInit {
   data: any;
-  toggleview:boolean=true;
+  toggleview:boolean=false;
   constructor(private auth:AuthService,public router:Router,public http:HttpClient,public reg:RegisterService) { }
   user:any
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       let position = 0;  
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('MYPdf.pdf'); // Generated PDF   
+      pdf.save('myresume.pdf'); // Generated PDF   
     });  
   }  
 }

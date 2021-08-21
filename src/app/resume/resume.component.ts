@@ -17,17 +17,21 @@ import { RegisterService } from '../register.service';
 export class ResumeComponent implements OnInit {
   resume: FormGroup;
 
-  constructor(public form: FormBuilder,public reg:RegisterService,public router:Router) {
+  constructor(
+    public form: FormBuilder,
+    public reg: RegisterService,
+    public router: Router
+  ) {
     this.resume = this.form.group({
       personal: this.form.group({
-        name: ['',[]],
+        name: ['', []],
         email: [''],
         phone: [''],
         address: [''],
       }),
       education: this.form.array([]),
       work: this.form.array([]),
-     
+
       projects: this.form.array([]),
       skills: [''],
     });
@@ -43,14 +47,14 @@ export class ResumeComponent implements OnInit {
   addWork() {
     this.work.push(
       this.form.group({
-        profile:[''],
+        profile: [''],
         company: [''],
-        desc:['']
+        desc: [''],
       })
     );
     console.log(this.work);
   }
-  removeWork(i:any){
+  removeWork(i: any) {
     this.work.removeAt(i);
   }
   addProject() {
@@ -62,13 +66,13 @@ export class ResumeComponent implements OnInit {
     );
     console.log(this.projects());
   }
-  removeProject(i:any){
+  removeProject(i: any) {
     this.projects().removeAt(i);
   }
-  get education(){
+  get education() {
     return this.resume.get('education') as FormArray;
   }
-  addEducation(){
+  addEducation() {
     this.education.push(
       this.form.group({
         school: [''],
@@ -79,21 +83,19 @@ export class ResumeComponent implements OnInit {
     );
     console.log(this.education);
   }
-  removeEducation(i:any){
+  removeEducation(i: any) {
     this.education.removeAt(i);
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.resume.value);
     this.reg.register(this.resume.value).subscribe(
-      (err)=>{
+      (err) => {
         console.log(err);
       },
-      (res)=>{  
+      (res) => {
         console.log(res);
         this.router.navigate(['/home']);
       }
-    )
+    );
   }
-  
 }
-

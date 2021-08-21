@@ -1,8 +1,8 @@
 <div class="text-center col-md-12">
   <h1>Hi {{ this.user.name }}</h1>
-  <button (click)="create()" class="btn">Click to create resume</button>
-  <button (click)="view()" class="btn">click to view your resume</button>
-  <div *ngIf="toggleview" class="container" style="height:100vh;width:100vw; border:.1px solid" id="test" (click)="captureScreen()" >
+  <button (click)="create()" *ngIf="this.data===undefined" class="btn">Click to create resume</button>
+  <button (click)="view()"  class="btn">click to view your resume</button>
+  <div *ngIf="toggleview && this.data!==undefined" class="container"  id="test" (click)="captureScreen()" >
       <h1>{{data.personal.name}}</h1>
       <p>{{data.personal.email}}/ {{data.personal.phone}} / {{data.personal.address}} </p>
       <hr style="border:3px solid black">
@@ -27,10 +27,10 @@
       <p>{{item.desc}}</p>
     </div>
       <hr>
-      <h3>skills</h3>
+      <!-- <h3>skills</h3>
       <ul style="text-align:left;" >
         <li>a</li>
         <li>b</li>
-      </ul>
+      </ul> -->
   </div>
 </div>
