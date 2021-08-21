@@ -1,2 +1,36 @@
-<h1>Hi {{this.user.name}}</h1>
-<button (click)="create()">Click to create resume</button>
+<div class="text-center col-md-12">
+  <h1>Hi {{ this.user.name }}</h1>
+  <button (click)="create()" class="btn">Click to create resume</button>
+  <button (click)="view()" class="btn">click to view your resume</button>
+  <div *ngIf="toggleview" class="container" style="height:100vh;width:100vw; border:.1px solid" id="test" (click)="captureScreen()" >
+      <h1>{{data.personal.name}}</h1>
+      <p>{{data.personal.email}}/ {{data.personal.phone}} / {{data.personal.address}} </p>
+      <hr style="border:3px solid black">
+      <h3>Education</h3>
+
+      <div style="text-align:left" *ngFor="let item of data.education">
+      <h2>{{item.school}}</h2>
+      <p> {{item.major}} / {{item.degree}} </p>
+      <p>{{item.CGPA}}</p>
+     </div>
+      <hr>
+      <h3>Experience</h3>
+      <div style="text-align:left" *ngFor="let item of data.work">
+      <h2>{{item.profile}}</h2>
+      <b>{{item.company}}</b>
+      <p>{{item.desc}}</p>
+    </div>
+      <h3>Projects</h3>
+      <hr>
+      <div style="text-align:left" *ngFor="let item of data.projects">
+      <h2>{{item.name}}</h2>
+      <p>{{item.desc}}</p>
+    </div>
+      <hr>
+      <h3>skills</h3>
+      <ul style="text-align:left;" >
+        <li>a</li>
+        <li>b</li>
+      </ul>
+  </div>
+</div>
