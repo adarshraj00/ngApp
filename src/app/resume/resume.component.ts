@@ -109,7 +109,8 @@ export class ResumeComponent implements OnInit {
             email: parsedData.personal.email,
             phone: parsedData.personal.phone,
             address: parsedData.personal.address,
-          }
+          },
+          skills: parsedData.skills
         })
         parsedData.education.map((item:any)=>{
           this.education.push(
