@@ -1,6 +1,7 @@
 <div class="text-center col-md-12">
   <h1>Hi {{ this.user.name }}</h1>
-  <button (click)="create()" *ngIf="this.data===undefined" class="btn">Click to create resume</button>
+  <hr>
+  <button (click)="create()"  class="btn">Click to create/edit resume</button>
   <button (click)="view()"  class="btn">click to view your resume</button>
   <div *ngIf="toggleview && this.data!==undefined" class="container"  id="test" (click)="captureScreen()" >
       <h1>{{data.personal.name}}</h1>

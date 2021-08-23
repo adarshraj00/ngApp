@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RegisterService } from '../register.service';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas'; 
@@ -35,8 +35,15 @@ export class HomeComponent implements OnInit {
         this.data=parsedData;
         console.log(this.data);
       },
+
       (err)=>{
-        console.log(err);
+        if(err instanceof HttpErrorResponse){
+          if(err.status===404){
+            alert("create a resume first")
+            this.toggleview=false;
+          }
+          console.log(err);
+        }
     })
     }
   }

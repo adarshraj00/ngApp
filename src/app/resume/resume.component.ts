@@ -24,7 +24,7 @@ export class ResumeComponent implements OnInit {
   ) {
     this.resume = this.form.group({
       personal: this.form.group({
-        name: ['', []],
+        name: [''],
         email: [''],
         phone: [''],
         address: [''],
@@ -97,5 +97,50 @@ export class ResumeComponent implements OnInit {
         this.router.navigate(['/home']);
       }
     );
+  }
+  onLoad(){
+    this.reg.getdata().subscribe(
+      (res) => {
+        const stringifyData=JSON.stringify(res);
+        const parsedData=JSON.parse(stringifyData); 
+        this.resume.patchValue({
+          personal: {
+            name: parsedData.personal.name,
+            email: parsedData.personal.email,
+            phone: parsedData.personal.phone,
+            address: parsedData.personal.address,
+          }
+        })
+        parsedData.education.map((item:any)=>{
+          this.education.push(
+            this.form.group({
+              school: item.school,
+              major: item.major,
+              degree: item.degree,
+              CGPA: item.CGPA,
+            })
+          );
+        })
+        parsedData.work.map((item:any)=>{
+          this.work.push(
+            this.form.group({
+              profile: item.profile,
+              company: item.company,
+              desc: item.desc,
+            })
+          );
+        })
+        parsedData.projects.map((item:any)=>{
+          this.projects().push(
+            this.form.group({
+              name: item.name,
+              desc: item.desc,
+            })
+          );
+        })
+      },(err)=>{
+        console.log(err);
+      }
+    )
   }
 }
