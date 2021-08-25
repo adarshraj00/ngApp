@@ -52,14 +52,14 @@ export class HomeComponent implements OnInit {
     const data = document.getElementById('test')!;  //Id of the table
     html2canvas(data).then(canvas => {  
       // Few necessary setting options  
-      let imgWidth = 208;   
-      let pageHeight = 295;    
-      let imgHeight = canvas.height * imgWidth / canvas.width;  
-      let heightLeft = imgHeight;  
+      let imgWidth = 208;    
+     // let imgHeight = canvas.height * imgWidth / canvas.width;  
+      //let heightLeft = imgHeight;  
 
       const contentDataURL = canvas.toDataURL('image/png')  
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       let position = 0;  
+      let imgHeight= pdf.internal.pageSize.height;;   
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
       pdf.save('myresume.pdf'); // Generated PDF   
     });  
