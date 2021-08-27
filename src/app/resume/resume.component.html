@@ -4,19 +4,22 @@
     <div formGroupName="personal" style="border:solid yellow; padding:2px">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" formControlName="name" class="form-control" />
+        <input type="text" [class.is-invalid]="resume.get('personal')?.get('name')?.invalid && resume.get('personal')?.get('name')?.touched" formControlName="name" class="form-control" />
+        <small [class.d-none]="resume.get('personal')?.get('name')?.valid || !resume.get('personal')?.get('name')?.touched" class="text-danger">name is invalid</small>
       </div>
       <div class="form-group">
         <label for="email">email</label>
-        <input type="email" formControlName="email" class="form-control" />
+        <input type="email" [class.is-invalid]="resume.get('personal')?.get('email')?.invalid && resume.get('personal')?.get('email')?.touched" formControlName="email" class="form-control" />
+        <small [class.d-none]="resume.get('personal')?.get('email')?.valid || !resume.get('personal')?.get('email')?.touched" class="text-danger">email is invalid</small>
       </div>
       <div class="form-group">
         <label for="phone">phone</label>
-        <input type="text" formControlName="phone" class="form-control"/>
+        <input type="text" [class.is-invalid]="resume.get('personal')?.get('phone')?.invalid && resume.get('personal')?.get('phone')?.touched" formControlName="phone" class="form-control"/>
+        <small [class.d-none]="resume.get('personal')?.get('phone')?.valid || !resume.get('personal')?.get('phone')?.touched" class="text-danger">contact is invalid</small>
       </div>
       <div class="form-group">
         <label for="address">address</label>
-        <input type="text" formControlName="address" class="form-control"/>
+        <input type="text" formControlName="address"  class="form-control"/>
       </div>
     </div>
     <h2>Add education  <button class="btn btn-secondary" (click)="addEducation()">add</button></h2>
@@ -97,7 +100,7 @@
       <input type="text" name="" placeholder="use comma separation" formControlName="skills" id="" class="form-control" />
     </div>
     <div style="display:flex;margin-top:20px;">
-    <button type="submit" (click)="onSubmit()" class="btn btn-primary text-center col-md-3" style="margin-left:20%">submit/update</button>
+    <button type="submit" [disabled]="resume.invalid" (click)="onSubmit()" class="btn btn-primary text-center col-md-3" style="margin-left:20%">submit/update</button>
     <button type="click" (click)="onLoad()" class="btn btn-success text-center col-md-3" style="margin-left:10%;">load saved data</button>
   </div>
   </form>

@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../register.service';
@@ -24,9 +24,9 @@ export class ResumeComponent implements OnInit {
   ) {
     this.resume = this.form.group({
       personal: this.form.group({
-        name: [''],
-        email: [''],
-        phone: [''],
+        name: ['',[Validators.required]],
+        email: ['',[Validators.required]],
+        phone: ['',[Validators.required,Validators.minLength(10)]],
         address: [''],
       }),
       education: this.form.array([]),
@@ -35,6 +35,8 @@ export class ResumeComponent implements OnInit {
       projects: this.form.array([]),
       skills: [''],
     });
+    console.log(this.resume.get('personal')?.get('name'));
+    
   }
 
   ngOnInit(): void {}
