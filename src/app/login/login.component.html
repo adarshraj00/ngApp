@@ -1,6 +1,7 @@
 <div class="container">
     <h1>LOGIN</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" >
+        <!-- {{f.value}} -->
         <!-- <pre>{{f.value|json}}</pre> -->
         <!-- <div class="form-group">
             <label for="name">
@@ -10,11 +11,12 @@
         </div> -->
         <div class="form-group">
             <label for="userName">user name</label>
-            <input type="text" name="userName" id="" class="form-control" ngModel>
+            <input type="text" name="userName" [class.is-invalid]="username.touched && username.invalid" class="form-control" #username="ngModel" ngModel required>
+            
         </div>
         <div class="form-group">
             <label for="password">password</label>
-            <input type="password" name="password" id="" ngModel class="form-control">
+            <input type="password" [class.is-invalid]="pass.touched && pass.invalid" #pass="ngModel" name="password" ngModel class="form-control" required>
         </div>
        
         <!-- <div class="form-group">
@@ -26,7 +28,7 @@
             <input type="text" name="contact" ngModel class="form-control">
         </div> -->
         <div>
-            <button type="submit" style="width: 100px; margin:auto;margin-top:30px;">Submit</button>
+            <button type="submit" [disabled]="f.form.invalid" style="width: 100px ;margin-top:30px; " class="btn btn-success ">Submit</button>
         </div>
     </form>
 </div>
