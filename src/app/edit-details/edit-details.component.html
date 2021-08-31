@@ -6,17 +6,17 @@
             <label for="name">
                 Name
             </label>
-            <input type="text" name="name" class="form-control" [(ngModel)]="this.user.name">
+            <input type="text" name="name" class="form-control" [(ngModel)]="this.user.name" #name="ngModel" required [class.is-invalid]="name.touched && name.invalid">
         </div>
         <div>
-            <button type="submit" style="width: 100px; margin:auto;margin-top:30px;" (click)="onClick('name')">Update</button>
+            <button type="submit" style="width: 100px; margin:auto;margin-top:30px;" (click)="onClick('name')" [disabled]="name.pristine || name.invalid">Update</button>
         </div>
         <div class="form-group">
             <label for="userName">user name</label>
-            <input type="text" name="userName" class="form-control"  [(ngModel)]="this.user.userName">
+            <input type="text" name="userName" class="form-control" #username="ngModel" required [class.is-invalid]="username.touched && username.invalid" [(ngModel)]="this.user.userName" >
         </div>
         <div>
-            <button type="submit" (click)="onClick('username')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+            <button type="submit" (click)="onClick('username')" style="width: 100px; margin:auto;margin-top:30px;" [disabled]="username.pristine || username.invalid">Update</button>
         </div>
         <div class="form-group">
             <label for="password">new password</label>
@@ -26,22 +26,23 @@
             <label for="password1">retype password</label>
             <input type="password" name="password1"  [(ngModel)]="confirmPass" class="form-control">
         </div>
+        <small *ngIf="f.value.password!==f.value.password1" class="text-danger">password do not match</small>
         <div>
-            <button type="submit" (click)="onClick('pass')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+            <button type="submit" (click)="onClick('pass')" [disabled]="f.value.password!==f.value.password1 || f.value.password==undefined || f.value.password==''" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
         </div>
         <div class="form-group">
             <label for="email">email</label>
-            <input type="text" name="email" [(ngModel)]="this.user.email" class="form-control">
+            <input type="text" name="email" [(ngModel)]="this.user.email" class="form-control" required email #Email="ngModel" [class.is-invalid]="Email.touched && Email.invalid">
         </div>
         <div>
-            <button type="submit" (click)="onClick('email')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+            <button type="submit" (click)="onClick('email')" style="width: 100px; margin:auto;margin-top:30px;" [disabled]="Email.pristine || Email.invalid" >Update</button>
         </div>
         <div class="form-group">
             <label for="contact">phone no</label>
-            <input type="text" name="contact" [(ngModel)]="this.user.contact" class="form-control">
+            <input type="text" name="contact" [(ngModel)]="this.user.contact" class="form-control" required #contact="ngModel" minlength="10" [class.is-invalid]="contact.touched && contact.invalid">
         </div>
         <div>
-            <button type="submit" (click)="onClick('contact')" style="width: 100px; margin:auto;margin-top:30px;">Update</button>
+            <button type="submit" (click)="onClick('contact')" style="width: 100px; margin:auto;margin-top:30px;" [disabled]="contact.invalid || contact.pristine" >Update</button>
         </div>
         <div class="form-group">
             <label for="oldPassword">Confirm old password</label>

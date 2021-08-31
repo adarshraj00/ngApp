@@ -14,12 +14,13 @@
         </div>
         <div class="form-group">
             <label for="password">password</label>
-            <input type="password" required #pass="ngModel" [class.is-invalid]="pass.touched && pass.invalid" name="password" id="" ngModel  class="form-control">
+            <input type="password" required #pass="ngModel" [class.is-invalid]="pass.touched && pass.invalid || f.value.password!==f.value.password1" name="password" id="" ngModel  class="form-control">
         </div>
         <div class="form-group">
             <label for="password1">retype password</label>
-            <input type="password" name="password1" required #pass2="ngModel" [class.is-invalid]="pass2.touched && pass2.invalid" ngModel class="form-control">
+            <input type="password" name="password1" required #pass2="ngModel" [class.is-invalid]="pass2.touched && pass2.invalid || f.value.password!==f.value.password1" ngModel class="form-control">
         </div>
+        <small *ngIf="f.value.password!==f.value.password1" class="text-danger">passwords do not match</small>
         <div class="form-group">
             <label for="email">email</label>
             <input type="email" name="email" email #emails="ngModel" required [class.is-invalid]="emails.touched && emails.invalid" ngModel class="form-control">
