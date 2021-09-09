@@ -13,7 +13,7 @@ import { ResumeComponent } from './resume/resume.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/trends',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {

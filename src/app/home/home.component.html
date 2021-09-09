@@ -1,43 +1,76 @@
-<div class="text-center col-md-12">
+<h1 class="text-center">Hi {{ this.user.name }}</h1>
+  <hr />
+<div class="text-center col-md-12 views" >
   <!-- text-center col-md-12 -->
-  <h1>Hi {{ this.user.name }}</h1>
-  <hr>
-  <button (click)="create()"  class="btn">Click to create/edit resume</button>
-  <button (click)="view()"  class="btn">click to view your resume</button>
-  <div *ngIf="toggleview && this.data!==undefined"   id="test"  style="border:solid 1px; width:850px;margin:auto">
-   
-    <div style="max-width: 90%; margin:auto;">
-      <h1 style="margin-top:15px;">{{data.personal.name}}</h1>
-      <p>{{data.personal.email}}/ {{data.personal.phone}} / {{data.personal.address}} </p>
-      <hr style="border:3px solid black">
-      <b *ngIf="data.education.length>0">Education</b>
-      <div style="text-align:left" *ngFor="let item of data.education">
-      <h4>{{item.school}}</h4>
-      <p *ngIf="item.major"> {{item.major}}</p>
-      <p>{{item.degree}} / {{item.CGPA}}</p>
-     </div>
-      <hr>
-      <b *ngIf="data.work.length>0">Experience</b> 
-      <div style="text-align:left" *ngFor="let item of data.work">
-      <h4>{{item.profile}}</h4>
-      <b>{{item.company}}</b>
-      <p>{{item.desc}}</p>
-    </div>
-    <hr>
-      <b *ngIf="data.projects.length>0">Projects</b>
-      <div style="text-align:left" *ngFor="let item of data.projects">
-      <h4>{{item.name}}</h4>
-      <p>{{item.desc}}</p>
-    </div>
-      <hr>
-      <b *ngIf="data.skills.split(',').length>0">Skills</b>
-      <br>
-      <ul style=" display: inline;" *ngFor="let item of data.skills.split(',')" >
-        <li style="list-style-type: none;display: inline; " *ngIf="item.length>0">{{item}}</li>
+  <div >
+  <button (click)="create()" class="btn btn-success">create/edit resume</button>
+  <button (click)="view()" class="btn btn-danger">view your resume</button>
+  <button
+    class="btn btn-success"
+    (click)="captureScreen()"
+  >
+    download
+  </button>
+  <div>
+  <div
+    *ngIf="toggleview && this.data !== undefined"
+    id="test"
+    style="border: solid 1px; width: 850px; margin: auto"
+  >
+    <div style="max-width: 90%; margin: auto" >
+       
+      <h1 (click)="handle('personal')" style="margin-top: 15px" #name >{{ data.personal.name }}</h1>
+      <p (click)="handle('personal')">
+        {{ data.personal.email }}/ {{ data.personal.phone }} /
+        {{ data.personal.address }}
+      </p>
+    
+      <hr style="border: 3px solid black" />
+      <b *ngIf="data.education.length > 0">Education</b>
+      <div style="text-align: left" (click)="handle('education')" *ngFor="let item of data.education">
+        <h4>{{ item.school }}</h4>
+        <p *ngIf="item.major">{{ item.major }}</p>
+        <p>{{ item.degree }} / {{ item.CGPA }}</p>
+      </div>
+      <hr />
+      <b *ngIf="data.work.length > 0">Experience</b>
+      <div style="text-align: left" (click)="handle('work')" *ngFor="let item of data.work">
+        <h4>{{ item.profile }}</h4>
+        <b>{{ item.company }}</b>
+        <p>{{ item.desc }}</p>
+      </div>
+      <hr />
+      <b *ngIf="data.projects.length > 0">Projects</b>
+      <div style="text-align: left" (click)="handle('projects')" *ngFor="let item of data.projects">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.desc }}</p>
+      </div>
+      <hr />
+      <b *ngIf="data.skills.split(',').length > 0">Skills</b>
+      <br />
+      <ul style="display: inline ;cursor:pointer" (click)="handle('skills')" *ngFor="let item of data.skills.split(',')">
+        <li
+          style="list-style-type: none; display: inline"
+          *ngIf="item.length > 0"
+        >
+          {{ item }}
+        </li>
       </ul>
     </div>
-
   </div>
-
-  <button *ngIf="toggleview" class="btn btn-success" style="margin:20px" (click)="captureScreen()">download</button>
+  <button *ngIf="toggleview" class="btn btn-info" (click)="save()">save</button>
+  <button
+    *ngIf="toggleview"
+    class="btn btn-success"
+    style="margin: 20px"
+    (click)="captureScreen()"
+  >
+    download
+  </button>
+  
+  </div>
+  </div>
+  <div *ngIf="toggleview" style="width:400px ;margin-top:50px">
+   <app-edit-resume></app-edit-resume>
+  </div>
 </div>

@@ -18,6 +18,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { ResumeComponent } from './resume/resume.component';
 import { ResumesComponent } from './resumes/resumes.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditResumeComponent } from './edit-resume/edit-resume.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditDetailsComponent,
     TrendsComponent,
     ResumeComponent,
-    ResumesComponent
+    ResumesComponent,
+    EditResumeComponent
   ],
   imports: [
     BrowserModule,

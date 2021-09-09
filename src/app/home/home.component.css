@@ -1,0 +1,9 @@
+.views{
+   display: flex;
+   
+   justify-content: center;
+}
+p,ul{
+   width: 765px;
+   word-wrap: break-word;
+}
