@@ -22,6 +22,7 @@ import { LoggedInGuard } from '../logged-in.guard';
 export class HomeComponent implements OnInit {
   data: any;
   toggleview: boolean = false;
+  clicked=false;
   constructor(
     private auth: AuthService,
     public router: Router,
@@ -103,8 +104,8 @@ export class HomeComponent implements OnInit {
   }
 
   public handle(typeOfdata: string) {
-    console.log(typeOfdata);
     
+    this.clicked=true;
     this.help.subjectsec.next(typeOfdata);
   }
 }
