@@ -1,12 +1,12 @@
+import { AuthService } from './../../../core/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { unescapeIdentifier } from '@angular/compiler';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   OnInit,
 } from '@angular/core';
-import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-edit-details',
   templateUrl: './edit-details.component.html',

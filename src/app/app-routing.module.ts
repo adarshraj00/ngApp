@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { TrendsComponent } from './core/components/trends/trends.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
-import {AuthGuard} from './auth.guard';
-import { HomeComponent } from './home/home.component';
-import { LoggedInGuard } from './logged-in.guard';
-import { EditDetailsComponent } from './edit-details/edit-details.component';
-import { TrendsComponent } from './trends/trends.component';
-import { ResumeComponent } from './resume/resume.component';
+import { ResumeComponent } from './features/resume/resume/resume.component';
+import { EditDetailsComponent } from './features/user/edit-details/edit-details.component';
+import { LoginComponent } from './features/user/login/login.component';
+import { RegisterComponent } from './features/user/register/register.component';
+
 
 const routes: Routes = [
   {
@@ -25,20 +25,19 @@ const routes: Routes = [
      component:HomeComponent,
      canActivate: [AuthGuard]
   },
+  // {
+  //   path: 'user/login',
+  //   loadChildren:()=>import('./features/user/user.module').then(m=>m.UserModule),
+  //   canActivate: [LoggedInGuard]
+  // },
+  // {
+  //   path: 'register',
+  //   component:RegisterComponent,
+  //   canActivate:[LoggedInGuard]
+  // },
   {
-    path: 'login',
-    component:LoginComponent,
-    canActivate:[LoggedInGuard]
-  },
-  {
-    path: 'register',
-    component:RegisterComponent,
-    canActivate:[LoggedInGuard]
-  },
-  {
-    path:'edit',
-    component:EditDetailsComponent,
-    canActivate:[AuthGuard]
+    path:'user',
+    loadChildren:()=>import('./features/user/user.module').then(m=>m.UserModule),
   },
   {
     path: 'create',

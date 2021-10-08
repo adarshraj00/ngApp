@@ -1,3 +1,4 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -5,15 +6,13 @@ import {
   ViewChild,
   AfterViewInit,
 } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { RegisterService } from '../register.service';
-import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { NgSwitch } from '@angular/common';
-import { HelperServiceService } from '../helper-service.service';
-import { LoggedInGuard } from '../logged-in.guard';
+import jspdf from 'jspdf';
+import { AuthService } from '../../services/auth.service';
+import { HelperServiceService } from '../../services/helper-service.service';
+import { RegisterService } from '../../services/register.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,22 +21,22 @@ import { LoggedInGuard } from '../logged-in.guard';
 export class HomeComponent implements OnInit {
   data: any;
   toggleview: boolean = false;
-  clicked=false;
+  clicked = false;
   constructor(
     private auth: AuthService,
     public router: Router,
     public http: HttpClient,
     public reg: RegisterService,
-    public help:HelperServiceService
+    public help: HelperServiceService
   ) {}
   @ViewChild('name', { static: false })
   nameRef!: ElementRef;
   user: any;
   ngOnInit(): void {
     //console.log(this.user);
-    this.help.subject.subscribe(data=>{
-      this.data=data;
-    })
+    this.help.subject.subscribe((data) => {
+      this.data = data;
+    });
     this.auth.getData().subscribe(
       (res) => {
         // console.log(res);
@@ -82,7 +81,7 @@ export class HomeComponent implements OnInit {
       },
       (res) => {
         console.log(res);
-        alert("saved");
+        alert('saved');
       }
     );
   }
@@ -104,8 +103,7 @@ export class HomeComponent implements OnInit {
   }
 
   public handle(typeOfdata: string) {
-    
-    this.clicked=true;
+    this.clicked = true;
     this.help.subjectsec.next(typeOfdata);
   }
 }

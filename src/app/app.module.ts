@@ -1,35 +1,27 @@
+import { UserModule } from './features/user/user.module';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import{HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
-import { TokenInterceptorService } from './token-interceptor.service';
-import { HomeComponent } from './home/home.component';
-import { LoggedInGuard } from './logged-in.guard';
-import { EditDetailsComponent } from './edit-details/edit-details.component';
-import { TrendsComponent } from './trends/trends.component';
-import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import { ResumeComponent } from './resume/resume.component';
-import { ResumesComponent } from './resumes/resumes.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { EditResumeComponent } from './edit-resume/edit-resume.component';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { HomeComponent } from './core/components/home/home.component';
+import { TrendsComponent } from './core/components/trends/trends.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { TokenInterceptorService } from './core/interceptor/token-interceptor.service';
+import { AuthService } from './core/services/auth.service';
+import { ResumeModule } from './features/resume/resume.module';
+import { LoggedInGuard } from './core/guards/logged-in.guard';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    LoginComponent,
     HomeComponent,
-    EditDetailsComponent,
     TrendsComponent,
-    ResumeComponent,
-    ResumesComponent,
-    EditResumeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +30,8 @@ import { EditResumeComponent } from './edit-resume/edit-resume.component';
     HttpClientModule,
     LoadingBarRouterModule,
     LoadingBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ResumeModule
   ],
   providers: [AuthService,AuthGuard,LoggedInGuard,{
      provide: HTTP_INTERCEPTORS, useClass:TokenInterceptorService , multi: true }],

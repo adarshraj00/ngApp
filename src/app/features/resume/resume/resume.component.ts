@@ -8,7 +8,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterService } from '../register.service';
+import { RegisterService } from 'src/app/core/services/register.service';
+
 @Component({
   selector: 'app-resume',
   templateUrl: './resume.component.html',

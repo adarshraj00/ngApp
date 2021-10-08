@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
-import { RegisterService } from '../register.service';
-import { HelperServiceService } from '../helper-service.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { AuthService } from "src/app/core/services/auth.service";
+import { HelperServiceService } from "src/app/core/services/helper-service.service";
+import { RegisterService } from "src/app/core/services/register.service";
+
 @Component({
   selector: 'app-edit-resume',
   templateUrl: './edit-resume.component.html',

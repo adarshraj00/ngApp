@@ -21,7 +21,7 @@ export class AuthService {
   }
   logoutUser(){
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user/login']);
   }
   getData(){
     return this.http.get('http://localhost:3000/api/userData')

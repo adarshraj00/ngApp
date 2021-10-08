@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { AuthService } from './core/services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -14,13 +14,13 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-        <a class="nav-link" *ngIf="!auth.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link" *ngIf="!auth.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
-        <a class="nav-link" *ngIf="auth.loggedIn()" routerLink="/edit" routerLinkActive="active">Edit details</a>
+        <a class="nav-link" *ngIf="!auth.loggedIn()" routerLink="user/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" *ngIf="!auth.loggedIn()" routerLink="user/register" routerLinkActive="active">Register</a>
+        <a class="nav-link" *ngIf="auth.loggedIn()" routerLink="user/editdetails" routerLinkActive="active">Edit details</a>
         <a *ngIf="auth.loggedIn()" class="nav-link" (click)="auth.logoutUser()" routerLinkActive="active" style="cursor:pointer">Logout</a>        
     </ul>
   </div>
-</nav>    
+</nav> 
 <div class="">
   <router-outlet></router-outlet>            
 </div>
